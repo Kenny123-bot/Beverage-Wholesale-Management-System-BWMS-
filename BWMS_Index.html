@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BWMS Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/chart.js" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Sidebar -->
+  <div class="flex h-screen">
+    <aside class="w-64 bg-white shadow-md">
+      <div class="p-6 text-xl font-bold text-blue-600">BWMS</div>
+      <nav class="mt-6">
+        <a href="#" class="block py-2 px-6 text-gray-700 hover:bg-blue-100 rounded">Dashboard</a>
+        <a href="#" class="block py-2 px-6 text-gray-700 hover:bg-blue-100 rounded">Sales</a>
+        <a href="#" class="block py-2 px-6 text-gray-700 hover:bg-blue-100 rounded">Stock</a>
+        <a href="#" class="block py-2 px-6 text-gray-700 hover:bg-blue-100 rounded">Customers</a>
+        <a href="#" class="block py-2 px-6 text-gray-700 hover:bg-blue-100 rounded">Reports</a>
+        <a href="#" class="block py-2 px-6 text-gray-700 hover:bg-blue-100 rounded">Suppliers</a>
+        <a href="#" class="block py-2 px-6 text-gray-700 hover:bg-blue-100 rounded">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-semibold text-gray-700">Dashboard</h1>
+        <div class="flex items-center space-x-4">
+          <input type="text" placeholder="Search..." class="px-4 py-2 border rounded-lg focus:outline-none">
+          <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Profile</button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h2 class="text-gray-500">Today Sales</h2>
+          <p class="text-2xl font-bold text-green-600">UGX 1,200,000</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h2 class="text-gray-500">Total Stock Value</h2>
+          <p class="text-2xl font-bold text-blue-600">UGX 8,500,000</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h2 class="text-gray-500">Low Stock Items</h2>
+          <p class="text-2xl font-bold text-red-600">5</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h2 class="text-gray-500">Outstanding Debts</h2>
+          <p class="text-2xl font-bold text-yellow-600">UGX 2,000,000</p>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h2 class="text-gray-700 font-semibold mb-2">Sales (Last 7 Days)</h2>
+          <canvas id="salesChart"></canvas>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h2 class="text-gray-700 font-semibold mb-2">Fast Moving Products</h2>
+          <canvas id="productsChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Sales Table -->
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h2 class="text-gray-700 font-semibold mb-4">Recent Sales</h2>
+        <table class="min-w-full table-auto">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="px-4 py-2 text-left">Invoice</th>
+              <th class="px-4 py-2 text-left">Customer</th>
+              <th class="px-4 py-2 text-left">Amount</th>
+              <th class="px-4 py-2 text-left">Status</th>
+              <th class="px-4 py-2 text-left">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="px-4 py-2">INV-001</td>
+              <td class="px-4 py-2">Bar XYZ</td>
+              <td class="px-4 py-2">UGX 150,000</td>
+              <td class="px-4 py-2"><span class="text-green-600">Paid</span></td>
+              <td class="px-4 py-2">27-Dec-2025</td>
+            </tr>
+            <tr class="border-b">
+              <td class="px-4 py-2">INV-002</td>
+              <td class="px-4 py-2">Shop ABC</td>
+              <td class="px-4 py-2">UGX 200,000</td>
+              <td class="px-4 py-2"><span class="text-yellow-600">Credit</span></td>
+              <td class="px-4 py-2">27-Dec-2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const salesChart = new Chart(document.getElementById('salesChart'), {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+          label: 'Sales (UGX)',
+          data: [100000, 200000, 150000, 300000, 250000, 400000, 350000],
+          borderColor: '#3B82F6',
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    const productsChart = new Chart(document.getElementById('productsChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Beer', 'Soda', 'Juice', 'Energy Drink', 'Water'],
+        datasets: [{
+          label: 'Quantity Sold',
+          data: [120, 90, 70, 50, 30],
+          backgroundColor: '#10B981'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

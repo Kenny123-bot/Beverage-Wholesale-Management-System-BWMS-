@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock | BWMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<div class="flex h-screen">
+  <aside class="w-64 bg-white shadow-md p-6 font-semibold text-blue-600">
+    BWMS
+  </aside>
+
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-semibold mb-6">Stock Inventory</h1>
+
+    <div class="bg-white rounded shadow overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-3 text-left">Product</th>
+            <th class="p-3">Category</th>
+            <th class="p-3">Stock</th>
+            <th class="p-3">Min</th>
+            <th class="p-3">Status</th>
+            <th class="p-3">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="p-3">Pepsi Crate</td>
+            <td class="p-3">Soda</td>
+            <td class="p-3">45</td>
+            <td class="p-3">20</td>
+            <td class="p-3 text-green-600">OK</td>
+            <td class="p-3">
+              <button class="text-blue-600">Add</button>
+            </td>
+          </tr>
+
+          <tr class="border-b bg-red-50">
+            <td class="p-3">Club Beer</td>
+            <td class="p-3">Beer</td>
+            <td class="p-3">8</td>
+            <td class="p-3">20</td>
+            <td class="p-3 text-red-600">Low</td>
+            <td class="p-3">
+              <button class="text-blue-600">Restock</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

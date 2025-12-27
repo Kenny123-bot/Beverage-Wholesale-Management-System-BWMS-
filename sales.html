@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sales | BWMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<div class="flex h-screen">
+  <!-- Sidebar (reuse from dashboard) -->
+  <aside class="w-64 bg-white shadow-md p-6 font-semibold text-blue-600">
+    BWMS
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-semibold mb-6">New Sale</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Sale Form -->
+      <div class="lg:col-span-2 bg-white p-6 rounded shadow">
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <select class="border p-2 rounded">
+            <option>Cash Sale</option>
+            <option>Customer - Bar XYZ</option>
+          </select>
+
+          <select class="border p-2 rounded">
+            <option>Cash</option>
+            <option>Credit</option>
+          </select>
+        </div>
+
+        <table class="w-full text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2 text-left">Product</th>
+              <th class="p-2">Qty</th>
+              <th class="p-2">Price</th>
+              <th class="p-2">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="p-2">Nile Beer Crate</td>
+              <td class="p-2"><input class="w-16 border rounded p-1" value="2"></td>
+              <td class="p-2">UGX 90,000</td>
+              <td class="p-2">UGX 180,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">
+          + Add Product
+        </button>
+      </div>
+
+      <!-- Summary -->
+      <div class="bg-white p-6 rounded shadow">
+        <h2 class="font-semibold mb-4">Invoice Summary</h2>
+        <p>Total: <strong>UGX 180,000</strong></p>
+        <p class="mb-4">Balance: <strong>UGX 0</strong></p>
+
+        <button class="w-full bg-green-600 text-white py-2 rounded mb-2">
+          Save Sale
+        </button>
+        <button class="w-full bg-gray-600 text-white py-2 rounded">
+          Print Invoice
+        </button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
